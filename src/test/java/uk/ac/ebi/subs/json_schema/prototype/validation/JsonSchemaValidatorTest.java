@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Optional;
-
 public class JsonSchemaValidatorTest {
 
     private JsonSchemaValidator validator;
@@ -18,14 +16,11 @@ public class JsonSchemaValidatorTest {
 
     @Test
     public void test() {
-        Optional<ValidationException> exception = validator.validate("{\"hello\" : \"world\"}");
-
-        if (exception.isPresent()) {
-            Assert.assertFalse(exception.get().getCausingExceptions().isEmpty());
-            Assert.assertTrue(exception.get().getCausingExceptions().size() == 2);
-        } else {
-            Assert.fail();
+        try {
+            validator.validate("{\"hello\" : \"world\"}");
+        } catch (ValidationException exception) {
+            Assert.assertFalse(exception.getCausingExceptions().isEmpty());
+            Assert.assertTrue(exception.getCausingExceptions().size() == 2);
         }
-
     }
 }

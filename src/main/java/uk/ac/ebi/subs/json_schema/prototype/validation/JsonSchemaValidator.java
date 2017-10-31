@@ -1,14 +1,12 @@
 package uk.ac.ebi.subs.json_schema.prototype.validation;
 
 import org.everit.json.schema.Schema;
-import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Optional;
 
 public class JsonSchemaValidator {
 
@@ -27,23 +25,11 @@ public class JsonSchemaValidator {
         }
     }
 
-    public Optional<ValidationException> validate(String jsonObjectString) {
-        ValidationException exception = null;
-        try {
-            this.schema.validate(new JSONObject(jsonObjectString));
-        } catch (ValidationException e) {
-            exception = e;
-            return Optional.of(exception);
-        }
-        return Optional.ofNullable(exception);
+    public void validate(String jsonObjectString) {
+        this.schema.validate(new JSONObject(jsonObjectString));
     }
 
-    public Optional<ValidationException> validate(JSONObject jsonObject) {
-        try {
-            this.schema.validate(jsonObject);
-        } catch (ValidationException e) {
-            return Optional.of(e);
-        }
-        return Optional.ofNullable(null);
+    public void validate(JSONObject jsonObject) {
+        this.schema.validate(jsonObject);
     }
 }

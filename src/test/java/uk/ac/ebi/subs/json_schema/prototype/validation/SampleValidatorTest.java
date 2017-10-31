@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Optional;
 
 public class SampleValidatorTest {
 
@@ -26,10 +25,11 @@ public class SampleValidatorTest {
     public void test() {
         try (InputStream inputStream = getClass().getResourceAsStream(SAMPLE_PATH)) {
             JSONObject sample = new JSONObject(new JSONTokener(inputStream));
-            Optional<ValidationException> validationException = validator.validate(sample);
 
-            if(validationException.isPresent()) {
-                System.out.println(validationException.get().getViolatedSchema().toString());
+            try {
+                validator.validate(sample);
+            } catch (ValidationException exception) {
+                System.out.println(exception.getViolatedSchema().toString());
                 Assert.fail();
             }
 
