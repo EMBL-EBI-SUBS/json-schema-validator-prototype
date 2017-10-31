@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Sample",
+  "description": "A BioSamples sample.",
+
+  "type": "object",
+  "properties": {
+    "alias": {
+      "description": "A sample unique identifier in a submission.",
+      "type": "string"
+    }
+  },
+  "required": ["alias"]
+}

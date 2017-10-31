@@ -8,8 +8,7 @@ import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class JsonSchemaValidator {
 
@@ -28,12 +27,23 @@ public class JsonSchemaValidator {
         }
     }
 
-    public List<ValidationException> validate(String jsonObject) {
+    public Optional<ValidationException> validate(String jsonObjectString) {
+        ValidationException exception = null;
         try {
-            this.schema.validate(new JSONObject(jsonObject));
+            this.schema.validate(new JSONObject(jsonObjectString));
         } catch (ValidationException e) {
-            return e.getCausingExceptions();
+            exception = e;
+            return Optional.of(exception);
         }
-        return new ArrayList<>();
+        return Optional.ofNullable(exception);
+    }
+
+    public Optional<ValidationException> validate(JSONObject jsonObject) {
+        try {
+            this.schema.validate(jsonObject);
+        } catch (ValidationException e) {
+            return Optional.of(e);
+        }
+        return Optional.ofNullable(null);
     }
 }
