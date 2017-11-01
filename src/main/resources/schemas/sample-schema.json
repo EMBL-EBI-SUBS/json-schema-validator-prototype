@@ -8,7 +8,57 @@
     "alias": {
       "description": "A sample unique identifier in a submission.",
       "type": "string"
+    },
+    "taxonId": {
+      "description": "The taxonomy id for the sample species.",
+      "type": "integer"
+    },
+    "taxon": {
+      "description": "The taxonomy name for the sample species.",
+      "type": "string"
+    },
+    "title": {
+      "description": "A sample title.",
+      "type": "string"
+    },
+    "description": {
+      "description": "A sample title.",
+      "type": "string"
+    },
+
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Property name.",
+            "type": "string"
+          },
+          "value": {
+            "description": "Property value.",
+            "type": "string"
+          },
+          "terms": {
+            "description": "Attribute value ontology terms.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "Ontology term unique url.",
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        },
+        "dependencies": {
+          "name": { "required": ["value"] }
+        }
+      }
     }
   },
-  "required": ["alias"]
+  "required": ["alias", "taxonId"]
 }

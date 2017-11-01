@@ -1,8 +1,5 @@
 {
   "alias" : "D1",
-  "team" : {
-    "name" : "self.usi-user"
-  },
   "title" : "NA12878_D1",
   "description" : "Material derived from cell line NA12878",
   "attributes" : [ {
@@ -16,7 +13,8 @@
     "value" : "2017-01-01T01:01:01",
     "terms" : [ ]
   } ],
-  "sampleRelationships" : [ ],
+  "sampleRelationships" : [],
   "taxonId" : 9606,
-  "taxon" : "Homo sapiens"
+  "taxon" : "Homo sapiens",
+  "releaseDate": "2012-01-01T00:00:00Z"
 }

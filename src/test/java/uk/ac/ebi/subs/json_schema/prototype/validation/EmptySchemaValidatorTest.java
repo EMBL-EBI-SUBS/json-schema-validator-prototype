@@ -1,17 +1,19 @@
 package uk.ac.ebi.subs.json_schema.prototype.validation;
 
 import org.everit.json.schema.ValidationException;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JsonSchemaValidatorTest {
+public class EmptySchemaValidatorTest {
 
     private JsonSchemaValidator validator;
 
     @Before
     public void setUp() throws Exception {
-        this.validator = new JsonSchemaValidator("/schemas/person-schema.json");
+        this.validator = new JsonSchemaValidator(SchemaLoader.load(new JSONObject("{}")));
     }
 
     @Test
