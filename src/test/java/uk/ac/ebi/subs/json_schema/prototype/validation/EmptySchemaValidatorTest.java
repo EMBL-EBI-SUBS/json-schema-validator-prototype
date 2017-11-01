@@ -13,7 +13,7 @@ public class EmptySchemaValidatorTest {
 
     @Before
     public void setUp() throws Exception {
-        this.validator = new JsonSchemaValidator(SchemaLoader.load(new JSONObject("{}")));
+        validator = new JsonSchemaValidator(SchemaLoader.load(new JSONObject("{}")));
     }
 
     @Test

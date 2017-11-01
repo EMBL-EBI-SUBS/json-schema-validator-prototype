@@ -1,5 +1,6 @@
 package uk.ac.ebi.subs.json_schema.prototype.validation;
 
+import org.everit.json.schema.FormatValidator;
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
@@ -20,6 +21,22 @@ public class JsonSchemaValidator {
         try (InputStream inputStream = getClass().getResourceAsStream(schema_path)) {
             JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
             this.schema = SchemaLoader.load(rawSchema);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public JsonSchemaValidator(String schema_path, FormatValidator customFormatValidator) {
+        try (InputStream inputStream = getClass().getResourceAsStream(schema_path)) {
+            JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
+
+            SchemaLoader schemaLoader = SchemaLoader.builder()
+                    .schemaJson(rawSchema)
+                    .addFormatValidator(customFormatValidator)
+                    .build();
+
+            this.schema = schemaLoader.load().build();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -22,8 +22,9 @@
       "type": "string"
     },
     "description": {
-      "description": "A sample title.",
-      "type": "string"
+      "description": "A sample description.",
+      "type": "string",
+      "format": "custom-format"
     },
 
     "attributes": {
