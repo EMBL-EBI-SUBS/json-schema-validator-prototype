@@ -1,4 +1,4 @@
-package uk.ac.ebi.subs.json_schema.prototype.validation;
+package uk.ac.ebi.subs.json_schema.org.everit;
 
 import org.everit.json.schema.ValidationException;
 import org.json.JSONObject;
@@ -6,11 +6,12 @@ import org.json.JSONTokener;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.ebi.subs.json_schema.prototype.org.everit.JsonSchemaValidator;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class BiosamplesSchemaValidatorTest {
+public class SampleSchemaValidatorTest {
 
     private JsonSchemaValidator validator;
 
@@ -18,7 +19,7 @@ public class BiosamplesSchemaValidatorTest {
 
     @Before
     public void setUp() throws Exception {
-        validator = new JsonSchemaValidator("/schemas/biosamples-schema.json");
+        validator = new JsonSchemaValidator("/schemas/sample-schema.json");
     }
 
     @Test
@@ -29,7 +30,7 @@ public class BiosamplesSchemaValidatorTest {
             try {
                 validator.validate(sample);
             } catch (ValidationException exception) {
-                exception.getAllMessages().forEach(System.out::println);
+                System.out.println(exception.getViolatedSchema().toString());
                 Assert.fail();
             }
 

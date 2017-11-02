@@ -1,4 +1,4 @@
-package uk.ac.ebi.subs.json_schema.prototype.validation.format;
+package uk.ac.ebi.subs.json_schema.prototype.org.everit;
 
 import org.everit.json.schema.FormatValidator;
 

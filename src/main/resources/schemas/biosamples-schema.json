@@ -15,7 +15,7 @@
       "format": "date-time"
     },
     "sampleRelationships": {
-      "description": "",
+      "description": "List of relationships between samples.",
       "type": "array",
       "items": {
         "type": "object",

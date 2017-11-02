@@ -1,4 +1,4 @@
-package uk.ac.ebi.subs.json_schema.prototype.validation;
+package uk.ac.ebi.subs.json_schema.org.everit;
 
 import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.ebi.subs.json_schema.prototype.org.everit.JsonSchemaValidator;
 
 public class EmptySchemaValidatorTest {
 
