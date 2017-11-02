@@ -8,6 +8,7 @@ import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
 
 public class JsonSchemaValidator {
 
@@ -37,6 +38,20 @@ public class JsonSchemaValidator {
 
             this.schema = schemaLoader.load().build();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public JsonSchemaValidator(String schema_path, Set<FormatValidator> customFormatValidators) {
+        try (InputStream inputStream = getClass().getResourceAsStream(schema_path)) {
+            JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
+
+            SchemaLoader.SchemaLoaderBuilder builder = new SchemaLoader.SchemaLoaderBuilder();
+            customFormatValidators.forEach(formatValidator -> builder.addFormatValidator(formatValidator));
+            SchemaLoader schemaLoader = builder.schemaJson(rawSchema).build();
+
+            this.schema = schemaLoader.load().build();
         } catch (IOException e) {
             e.printStackTrace();
         }
