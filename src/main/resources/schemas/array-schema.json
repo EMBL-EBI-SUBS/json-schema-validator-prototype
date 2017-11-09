@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Complex Array",
-  "description": "Schema to validate the presence and value of an object within an array (NOT WORKING).",
+  "description": "Schema to validate the presence and value of an object within an array (WORKING!!!).",
 
   "type": "object",
   "properties": {
