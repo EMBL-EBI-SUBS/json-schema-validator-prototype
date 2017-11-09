@@ -8,6 +8,22 @@
     "names": {
       "type": "array",
       "minItems": 1,
+      "contains": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "nickName": {
+            "type": "string",
+            "pattern": "^Ginny$"
+          }
+        },
+        "required": ["nickName"]
+      },
       "items": {
         "type": "object",
         "properties": {
