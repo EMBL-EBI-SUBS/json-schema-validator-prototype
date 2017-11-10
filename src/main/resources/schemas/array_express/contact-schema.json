@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Array Express Contact",
+  "description": "Schema to validate an Array Express contact.",
+
+  "type": "object",
+  "properties": {
+    "contacts": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/contact"},
+      "minItems": 1,
+      "contains": {
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "type": "string",
+                  "pattern": "^submitter$"
+                }
+              },
+              "required": ["role"]
+            }
+          }
+        },
+        "required": ["roles"]
+      }
+    }
+  },
+
+  "definitions": {
+
+    "contact": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "affiliation": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["submitter"]
+              },
+              "termSource": {
+                "$ref": "#/definitions/termSource"
+              }
+            },
+            "dependencies": {
+              "role": { "required": ["termSource"] }
+            }
+          }
+        }
+      },
+      "required": ["firstName", "lastName", "affiliation"]
+    },
+
+    "termSource": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "url" },
+        "version": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "required": ["name"]
+    }
+  }
+}

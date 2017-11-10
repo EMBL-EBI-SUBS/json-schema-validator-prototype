@@ -1,0 +1,23 @@
+{
+  "contacts": [
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "affiliation": "EBI",
+      "roles": [
+        {
+          "role": "submitter",
+          "termSource": {
+            "name": "term source name"
+          }
+        }
+      ]
+    },
+    {
+      "firstName": "John",
+      "lastName": "Smith",
+      "affiliation": "EBI",
+      "roles": []
+    }
+  ]
+}
