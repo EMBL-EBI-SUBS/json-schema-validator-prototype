@@ -3,13 +3,17 @@
     {
       "firstName": "Hermione",
       "lastName": "Granger"
-    }, {
+    },
+    {
       "firstName": "Harry",
       "lastName": "Potter"
-    }, {
+    },
+    {
       "firstName": "Ron",
-      "lastName": "Weasley"
-    }, {
+      "lastName": "Weasley",
+      "nickName": "Ron-Ron"
+    },
+    {
       "firstName": "Ginevra",
       "lastName": "Weasley",
       "nickName": "Ginny"

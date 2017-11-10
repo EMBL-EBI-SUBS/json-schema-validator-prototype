@@ -5,7 +5,7 @@ import org.junit.Test;
 import uk.ac.ebi.subs.json_schema.AbstractSchemaValidation;
 import uk.ac.ebi.subs.json_schema.prototype.org.everit.JsonSchemaValidator;
 
-public class ArraySchemaValidationTest extends AbstractSchemaValidation{
+public class ArraySchemaValidationTest extends AbstractSchemaValidation {
 
     private JsonSchemaValidator validator;
 
@@ -17,7 +17,7 @@ public class ArraySchemaValidationTest extends AbstractSchemaValidation{
     }
 
     @Test
-    public void test() {
+    public void testAtLeastOneElementWithNickName() {
         super.validate(validator, ARRAY_PATH);
     }
 
