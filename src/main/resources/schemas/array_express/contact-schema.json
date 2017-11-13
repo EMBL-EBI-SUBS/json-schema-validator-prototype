@@ -9,26 +9,68 @@
       "type": "array",
       "items": { "$ref": "#/definitions/contact"},
       "minItems": 1,
-      "contains": {
-        "type": "object",
-        "properties": {
-          "roles": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "properties": {
-                "role": {
-                  "type": "string",
-                  "pattern": "^submitter$"
-                }
-              },
-              "required": ["role"]
-            }
+      "allOf": [
+        {
+          "description": "At least one contact must have a role specified.",
+          "contains": {
+            "type": "object",
+            "required": ["roles"]
           }
         },
-        "required": ["roles"]
-      }
+        {
+          "description": "At least one contact must have email specified.",
+          "contains": {
+            "type": "object",
+            "required": ["email"]
+          }
+        },
+        {
+          "description": "At least one contact must have 'submitter' role  and email specified.",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "string",
+                      "pattern": "^submitter$"
+                    }
+                  },
+                  "required": ["role"]
+                }
+              }
+            },
+            "required": ["roles", "email"]
+          }
+        },
+        {
+          "description": "At least one contact must have 'submitter' role  and affiliation specified.",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "string",
+                      "pattern": "^submitter$"
+                    }
+                  },
+                  "required": ["role"]
+                }
+              }
+            },
+            "required": ["roles", "affiliation"]
+          }
+        }
+      ]
     }
   },
 
@@ -56,19 +98,17 @@
             "properties": {
               "role": {
                 "type": "string",
-                "enum": ["submitter"]
+                "enum": ["submitter", "analyst"]
               },
               "termSource": {
                 "$ref": "#/definitions/termSource"
               }
             },
-            "dependencies": {
-              "role": { "required": ["termSource"] }
-            }
+            "required": ["role"]
           }
         }
       },
-      "required": ["firstName", "lastName", "affiliation"]
+      "required": ["firstName", "lastName"]
     },
 
     "termSource": {

@@ -4,20 +4,38 @@
       "firstName": "Jane",
       "lastName": "Smith",
       "affiliation": "EBI",
-      "roles": [
-        {
-          "role": "submitter",
-          "termSource": {
-            "name": "term source name"
-          }
-        }
-      ]
+      "email": "email@email"
     },
     {
       "firstName": "John",
       "lastName": "Smith",
       "affiliation": "EBI",
-      "roles": []
+      "roles": [
+        {
+          "role": "analyst"
+        }
+      ]
+    },
+    {
+      "firstName": "Tom",
+      "lastName": "Eagle",
+      "affiliation": "Sanger",
+      "roles": [
+        {
+          "role": "submitter"
+        }
+      ]
+    },
+    {
+      "firstName": "Tina",
+      "lastName": "Foster",
+
+      "email": "email@email",
+      "roles": [
+        {
+          "role": "submitter"
+        }
+      ]
     }
   ]
 }
