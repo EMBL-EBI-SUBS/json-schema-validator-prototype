@@ -67,9 +67,25 @@
           "type": "string",
           "format": "uri"
         },
-        "same_as": {
-          "type": "string",
-          "pattern": "^SAM[END][AG]?[0-9]+"
+        "sampleRelationships": {
+          "description": "List of relationships between samples.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "description": "Sample accession to which the sample relationship refers to.",
+                "type": "string",
+                "pattern": "^SAM[END][AG]?[0-9]+"
+              },
+              "nature": {
+                "description": "Nature of the relationship between the samples.",
+                "const": "same as"
+              }
+            },
+            "required": ["target", "nature"]
+          },
+          "maxItems": 1
         }
       },
       "required": ["material", "project"]
