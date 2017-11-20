@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Template Schema",
+  "description": "Schema to serve as a template on creation of new schemas.",
+
+  "type": "object",
+  "properties": {}
+}
